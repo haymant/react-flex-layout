@@ -36,6 +36,17 @@ export default class Layout extends React.Component {
     layoutEvents.removeListener('layout-changed', this.handleResize)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.layoutHeight && this.props.layoutHeight !== 'flex' && nextProps.layoutHeight !== this.props.layoutHeight) {
+      this.setHeight(nextProps.layoutHeight)
+      layoutEvents.emit('layout-changed')
+    }
+    if (this.props.layoutWidth && this.props.layoutWidth !== 'flex' && nextProps.layoutWidth !== this.props.layoutWidth) {
+      this.setWidth(nextProps.layoutWidth)
+      layoutEvents.emit('layout-changed')
+    }
+  }
+
   handleResize() {
     let newWidth = this.state.layoutWidth
     let newHeight = this.state.layoutHeight
@@ -53,6 +64,9 @@ export default class Layout extends React.Component {
       this.state.layoutWidth = newWidth
       this.state.layoutHeight = newHeight
       this.setState(this.state)
+    }
+    if (this.props.onChange) {
+      this.props.onChange(newWidth || newHeight)
     }
   }
 

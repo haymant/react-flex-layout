@@ -40,6 +40,22 @@ import {Layout, LayoutSplitter} from 'react-flex-layout'
 </Layout>
 ```
 
+Can also be controlled:
+
+```
+import {Layout, LayoutSplitter} from 'react-flex-layout'
+
+<Layout>
+  <Layout layoutWidth={this.state.width} onChange={width => { (this.setState({ width })) }}>Column1</Layout>
+  <LayoutSplitter />
+  <Layout layoutWidth='flex'>
+    <button onClick={() => this.setState({ width: 100 })}>Resize 100</button>
+    <button onClick={() => this.setState({ width: 200 })}>Resize 200</button>
+    <button onClick={() => this.setState({ width: 300 })}>Resize 300</button>
+  </Layout>
+</Layout>
+```
+
 ![Demo](readme1.gif)
 
 ### Compatibility
