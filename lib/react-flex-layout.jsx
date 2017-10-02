@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import LayoutSplitter from './react-flex-layout-splitter.jsx'
 import layoutEvents from './react-flex-layout-events.jsx'
 
@@ -250,10 +251,10 @@ export default class Layout extends React.Component {
 }
 
 Layout.propTypes = {
-  hideSelection: React.PropTypes.bool,
-  minWidth: React.PropTypes.number,
-  minHeight: React.PropTypes.number,
-  onResize:React.PropTypes.func
+  hideSelection: PropTypes.bool,
+  minWidth: PropTypes.number,
+  minHeight: PropTypes.number,
+  onResize:PropTypes.func
 }
 Layout.defaultProps = {
   minWidth: 50,
